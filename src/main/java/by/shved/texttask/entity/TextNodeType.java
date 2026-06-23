@@ -1,10 +1,12 @@
-package by.shved.texttask.type;
+package by.shved.texttask.entity;
 
 public enum TextNodeType {
     TEXT(""),
     PARAGRAPH("\n"),
     SENTENCE(" "),
-    LEXEME(" "),
+    LEXEME(""),
+    WORD(""),
+    PUNCTUATION(""),
     SYMBOL("");
 
     private final String delimiter;

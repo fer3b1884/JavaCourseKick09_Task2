@@ -1,7 +1,7 @@
 package by.shved.texttask.entity.impl;
 
 import by.shved.texttask.entity.TextNode;
-import by.shved.texttask.type.TextNodeType;
+import by.shved.texttask.entity.TextNodeType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,13 +16,13 @@ public class TextComposite implements TextNode {
     }
 
     @Override
-    public void add(TextNode component) {
-        children.add(component);
+    public boolean add(TextNode component) {
+        return children.add(component);
     }
 
     @Override
-    public void remove(TextNode component) {
-        children.remove(component);
+    public boolean remove(TextNode component) {
+        return children.remove(component);
     }
 
     @Override
@@ -63,6 +63,28 @@ public class TextComposite implements TextNode {
             count += child.countLetters();
         }
         return count;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        TextComposite that = (TextComposite) o;
+        if (type != that.type) {
+            return false;
+        }
+        return children.equals(that.children);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = type.hashCode();
+        result = 31 * result + children.hashCode();
+        return result;
     }
 
     @Override

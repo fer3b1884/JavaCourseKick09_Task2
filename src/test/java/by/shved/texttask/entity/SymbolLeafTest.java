@@ -1,7 +1,6 @@
 package by.shved.texttask.entity;
 
-import by.shved.texttask.entity.impl.TextLeaf;
-import by.shved.texttask.type.TextNodeType;
+import by.shved.texttask.entity.impl.SymbolLeaf;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TextLeafTest {
+class SymbolLeafTest {
 
     @BeforeEach
     void setUp() {
@@ -21,7 +20,7 @@ class TextLeafTest {
     void getTypeShouldReturnSymbol(char symbol) {
         // given
         TextNodeType expected = TextNodeType.SYMBOL;
-        TextLeaf leaf = new TextLeaf(symbol);
+        SymbolLeaf leaf = new SymbolLeaf(symbol);
         // when
         TextNodeType actual = leaf.getType();
         // then
@@ -32,7 +31,7 @@ class TextLeafTest {
     void restoreTextShouldReturnSymbolAsString() {
         // given
         String expected = "A";
-        TextLeaf leaf = new TextLeaf('A');
+        SymbolLeaf leaf = new SymbolLeaf('A');
         // when
         String actual = leaf.restoreText();
         // then
@@ -42,29 +41,29 @@ class TextLeafTest {
     @Test
     void addShouldThrowException() {
         // given
-        TextLeaf leaf = new TextLeaf('A');
+        SymbolLeaf leaf = new SymbolLeaf('A');
         // when + then
         assertThrows(
                 UnsupportedOperationException.class,
-                () -> leaf.add(new TextLeaf('B'))
+                () -> leaf.add(new SymbolLeaf('B'))
         );
     }
 
     @Test
     void removeShouldThrowException() {
         // given
-        TextLeaf leaf = new TextLeaf('A');
+        SymbolLeaf leaf = new SymbolLeaf('A');
         // when + then
         assertThrows(
                 UnsupportedOperationException.class,
-                () -> leaf.remove(new TextLeaf('B'))
+                () -> leaf.remove(new SymbolLeaf('B'))
         );
     }
 
     @Test
     void getChildrenShouldThrowException() {
         // given
-        TextLeaf leaf = new TextLeaf('A');
+        SymbolLeaf leaf = new SymbolLeaf('A');
         // when + then
         assertThrows(
                 UnsupportedOperationException.class,

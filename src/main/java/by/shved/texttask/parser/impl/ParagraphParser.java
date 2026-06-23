@@ -3,7 +3,7 @@ package by.shved.texttask.parser.impl;
 import by.shved.texttask.entity.TextNode;
 import by.shved.texttask.entity.impl.TextComposite;
 import by.shved.texttask.parser.TextParser;
-import by.shved.texttask.type.TextNodeType;
+import by.shved.texttask.entity.TextNodeType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
