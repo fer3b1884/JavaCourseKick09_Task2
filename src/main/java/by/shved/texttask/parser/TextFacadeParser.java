@@ -1,0 +1,35 @@
+package by.shved.texttask.parser;
+
+import by.shved.texttask.entity.TextNode;
+import by.shved.texttask.entity.impl.TextComposite;
+import by.shved.texttask.parser.impl.LexemeParser;
+import by.shved.texttask.parser.impl.ParagraphParser;
+import by.shved.texttask.parser.impl.SentenceParser;
+import by.shved.texttask.parser.impl.SymbolParser;
+import by.shved.texttask.type.TextNodeType;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class TextFacadeParser {
+    private static final Logger logger = LogManager.getLogger(TextFacadeParser.class);
+    private final TextParser paragraphParser;
+
+    public TextFacadeParser() {
+        paragraphParser =
+                new ParagraphParser(
+                        new SentenceParser(
+                                new LexemeParser(
+                                        new SymbolParser()
+                                )
+                        )
+                );
+    }
+
+    public TextNode parse(String text) {
+        logger.info("Started parsing text");
+        TextNode root = new TextComposite(TextNodeType.TEXT);
+        paragraphParser.parse(root, text);
+        logger.info("Text parsed successfully");
+        return root;
+    }
+}
