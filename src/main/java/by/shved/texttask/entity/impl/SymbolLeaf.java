@@ -25,7 +25,7 @@ public class SymbolLeaf implements TextNode {
 
     @Override
     public List<TextNode> getChildren() {
-        throw new UnsupportedOperationException("Leaf component does not support remove operation");
+        throw new UnsupportedOperationException("Leaf component does not support getChildren operation");
     }
 
     @Override
